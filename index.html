@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Login Page Detector | Cybersecurity & Phishing Analysis Engine</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="cyber-theme">
+    <!-- Cyber Background Elements -->
+    <div class="cyber-grid"></div>
+    <div class="cyber-glow-orb glow-top-left"></div>
+    <div class="cyber-glow-orb glow-bottom-right"></div>
+
+    <!-- Top Security Status Bar -->
+    <div class="status-ticker">
+        <div class="status-ticker-content">
+            <span class="ticker-item"><span class="dot pulse-green"></span> <strong>PROJECT:</strong> ETHICAL HACKING SUBJECT</span>
+            <span class="ticker-item"><span class="shield-mini">🛡️</span> <strong>ENGINE:</strong> 14 MULTI-VECTOR HEURISTIC AUDIT RULES</span>
+            <span class="ticker-item"><span class="dot pulse-blue"></span> <strong>AUTHOR:</strong> STUDENT INDEPENDENT CYBERSECURITY PROJECT</span>
+            <span class="ticker-item"><strong>CREDENTIAL SAFETY:</strong> ZERO HARVESTING / PRIVACY PRESERVED</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <circle cx="12" cy="11" r="3"/>
+                        <path d="m10 17 2 2 4-4"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">PHISH<span class="brand-accent">SENTRY</span></span>
+                    <span class="brand-tag">Fake Login Page Detector</span>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#scanner" class="nav-link active">Scanner</a>
+                <a href="#results-section" class="nav-link">Audit Results</a>
+                <a href="#attack-anatomy" class="nav-link">Attack Anatomy</a>
+                <a href="#history-section" class="nav-link">Scan History</a>
+                <a href="#project-info" class="nav-link">Project Info</a>
+            </nav>
+
+            <div class="nav-badge">
+                <span class="badge-dot"></span>
+                <span>v1.0 LIVE</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+        <!-- Hero & Scanner Section -->
+        <section id="scanner" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-chip">
+                    <span class="chip-icon">⚡</span>
+                    <span>ADVANCED CYBERSECURITY HEURISTIC ANALYZER</span>
+                </div>
+                <h1 class="hero-title">
+                    Detect <span class="gradient-text">Fake Login Pages</span> & Phishing Traps
+                </h1>
+                <p class="hero-subtitle">
+                    Examine suspicious website links in real time using 14 distinct threat heuristics.
+                    Identify brand impersonation, deceptive redirects, raw IP hosts, homograph attacks, and credential harvesting traps.
+                </p>
+
+                <!-- Scanner Card -->
+                <div class="scanner-card">
+                    <form id="scanForm" class="scanner-form" onsubmit="handleScanSubmit(event)">
+                        <div class="input-group">
+                            <span class="input-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                </svg>
+                            </span>
+                            <input 
+                                type="text" 
+                                id="urlInput" 
+                                class="url-input" 
+                                placeholder="Paste or type suspicious URL (e.g. http://paypal-security-update.xyz/login)..."
+                                autocomplete="off"
+                                spellcheck="false"
+                                required
+                            >
+                            <button type="button" class="btn-clear" id="btnClear" onclick="clearInput()" title="Clear URL">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                            <button type="submit" id="btnScan" class="btn-scan">
+                                <span class="btn-text">Scan Website</span>
+                                <span class="btn-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="22" y1="2" x2="11" y2="13"/>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Quick Demo Sample Buttons -->
+                    <div class="quick-samples">
+                        <span class="samples-label">Quick Test Scenarios:</span>
+                        <div class="sample-chips">
+                            <button class="chip chip-safe" onclick="loadSample('https://accounts.google.com/signin')">
+                                <span class="indicator-dot green"></span> Safe: Google Auth
+                            </button>
+                            <button class="chip chip-safe" onclick="loadSample('https://github.com/login')">
+                                <span class="indicator-dot green"></span> Safe: GitHub Login
+                            </button>
+                            <button class="chip chip-warning" onclick="loadSample('https://bit.ly/secure-banking-portal-verification')">
+                                <span class="indicator-dot yellow"></span> Suspicious: URL Shortener
+                            </button>
+                            <button class="chip chip-danger" onclick="loadSample('http://paypal-security-update.account-verification.xyz/login.php')">
+                                <span class="indicator-dot red"></span> Phishing: PayPal Spoof
+                            </button>
+                            <button class="chip chip-danger" onclick="loadSample('http://192.168.1.105/bank-login-secure/verify-identity.html')">
+                                <span class="indicator-dot red"></span> Phishing: Raw IP Login
+                            </button>
+                            <button class="chip chip-danger" onclick="loadSample('http://microsoft.com@cloud-account-update-portal.top/signin')">
+                                <span class="indicator-dot red"></span> Phishing: '@' Deception
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scanning Visualizer Modal / Overlay -->
+        <div id="scanningOverlay" class="scanning-overlay hidden">
+            <div class="scanning-modal">
+                <div class="radar-box">
+                    <div class="radar-circle circle-1"></div>
+                    <div class="radar-circle circle-2"></div>
+                    <div class="radar-circle circle-3"></div>
+                    <div class="radar-sweep"></div>
+                    <div class="radar-crosshair-h"></div>
+                    <div class="radar-crosshair-v"></div>
+                    <div class="radar-target target-1"></div>
+                    <div class="radar-target target-2"></div>
+                </div>
+                <div class="scanning-status">
+                    <h3 class="scanning-title">RUNNING SECURITY HEURISTICS</h3>
+                    <p id="scanningLogText" class="scanning-log">Initializing multi-vector inspection...</p>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="scanningProgressBar" class="progress-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audit Results Section -->
+        <section id="results-section" class="results-section hidden">
+            <div class="section-header">
+                <div class="badge-category">AUDIT REPORT</div>
+                <h2 class="section-title">Heuristic Threat Evaluation</h2>
+                <p class="section-subtitle">Comprehensive breakdown of URL indicators and calculated risk exposure.</p>
+            </div>
+
+            <!-- Primary Verdict Grid -->
+            <div class="results-grid">
+                <!-- Left Card: Verdict & Gauge -->
+                <div class="card verdict-card">
+                    <div class="card-header">
+                        <span class="card-tag">THREAT CLASSIFICATION</span>
+                        <span id="scanTimestamp" class="timestamp-label">--:--:--</span>
+                    </div>
+
+                    <div class="verdict-banner-box">
+                        <div id="verdictBadge" class="verdict-badge">
+                            <span id="verdictIcon" class="verdict-icon">🛡️</span>
+                            <span id="verdictText" class="verdict-text">ANALYZING...</span>
+                        </div>
+                        <p id="verdictDesc" class="verdict-desc">Please run a scan to see threat classification.</p>
+                    </div>
+
+                    <!-- Cyber Circular Risk Gauge -->
+                    <div class="gauge-container">
+                        <div class="gauge-svg-wrapper">
+                            <svg class="gauge-svg" viewBox="0 0 200 200">
+                                <circle class="gauge-bg" cx="100" cy="100" r="85"></circle>
+                                <circle id="gaugeProgress" class="gauge-progress" cx="100" cy="100" r="85"></circle>
+                            </svg>
+                            <div class="gauge-center-content">
+                                <span id="gaugeScoreValue" class="gauge-score">0</span>
+                                <span class="gauge-score-label">RISK SCORE</span>
+                                <span id="gaugeRiskLabel" class="gauge-risk-label">SAFE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scanned URL Details -->
+                    <div class="scanned-target-box">
+                        <span class="target-label">ANALYZED TARGET:</span>
+                        <div class="target-url-row">
+                            <code id="scannedUrlCode" class="target-url">https://...</code>
+                            <button class="btn-copy" onclick="copyAnalyzedUrl()" title="Copy URL">
+                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Technical Metrics Grid -->
+                    <div class="tech-metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-name">Protocol</span>
+                            <span id="metricScheme" class="metric-val">HTTPS</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-name">Port</span>
+                            <span id="metricPort" class="metric-val">443</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-name">URL Length</span>
+                            <span id="metricLength" class="metric-val">28 chars</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-name">Subdomains</span>
+                            <span id="metricSubdomains" class="metric-val">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Card: Heuristic Audit Matrix -->
+                <div class="card matrix-card">
+                    <div class="card-header">
+                        <span class="card-tag">DETECTION MATRIX</span>
+                        <div class="matrix-summary-badges">
+                            <span class="badge-mini badge-crit"><strong id="countCrit">0</strong> Critical</span>
+                            <span class="badge-mini badge-warn"><strong id="countWarn">0</strong> Warning</span>
+                            <span class="badge-mini badge-pass"><strong id="countPass">14</strong> Passed</span>
+                        </div>
+                    </div>
+
+                    <p class="matrix-intro">Every URL is examined against 14 behavioral security rules. Click any row to view cybersecurity reasoning.</p>
+
+                    <!-- Heuristic Checks List -->
+                    <div id="heuristicList" class="heuristic-list">
+                        <!-- Injected via JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Recommendations Section -->
+            <div class="card recommendations-card">
+                <div class="card-header">
+                    <div class="rec-title-group">
+                        <span class="rec-icon">🛡️</span>
+                        <span class="card-tag">ACTIONABLE SECURITY RECOMMENDATIONS</span>
+                    </div>
+                </div>
+                <div id="recommendationsList" class="recommendations-content">
+                    <!-- Dynamic Recommendations -->
+                </div>
+            </div>
+
+            <!-- Cybersecurity Academic Disclaimer -->
+            <div class="disclaimer-banner">
+                <div class="disclaimer-icon">⚠️</div>
+                <div class="disclaimer-text">
+                    <strong>Ethical Hacking Academic Disclaimer:</strong> This tool utilizes static URL lexical and structural heuristic analysis to compute threat probability. While effective at identifying deceptive patterns, domain spoofing, and raw IP nodes, no automated heuristic tool can guarantee 100% safety. Attackers occasionally compromise legitimate domains or deploy dynamic evasions. Always verify identities and use multi-factor authentication (2FA).
+                </div>
+            </div>
+        </section>
+
+        <!-- Attack Anatomy / Educational Section -->
+        <section id="attack-anatomy" class="edu-section">
+            <div class="section-header">
+                <div class="badge-category">EDUCATIONAL ANALYSIS</div>
+                <h2 class="section-title">Anatomy of a Fake Login Page Attack</h2>
+                <p class="section-subtitle">Understanding the technical lifecycle of credential harvesting and social engineering.</p>
+            </div>
+
+            <div class="attack-steps-container">
+                <div class="attack-step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">🎯</div>
+                    <h3 class="step-title">Reconnaissance & Cloning</h3>
+                    <p class="step-desc">
+                        The attacker selects a target brand (e.g. PayPal, Google, Bank) and clones the HTML, CSS, and branding assets to craft an indistinguishable login interface.
+                    </p>
+                    <div class="step-indicator">Tooling: HTTrack / Scraping</div>
+                </div>
+
+                <div class="attack-step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">🌐</div>
+                    <h3 class="step-title">Deceptive Domain Crafting</h3>
+                    <p class="step-desc">
+                        Attackers register typosquatted domains (<code>paypal-security.xyz</code>) or deploy on compromised IP servers, often abusing subdomains to visually deceive mobile users.
+                    </p>
+                    <div class="step-indicator">Vector: Typosquatting / IDN</div>
+                </div>
+
+                <div class="attack-step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">✉️</div>
+                    <h3 class="step-title">Social Engineering Delivery</h3>
+                    <p class="step-desc">
+                        Lure messages via phishing email, SMS (smishing), or QR codes are distributed with urgent calls to action ("Account Suspended! Verify Immediately!").
+                    </p>
+                    <div class="step-indicator">Vector: Phishing / Smishing</div>
+                </div>
+
+                <div class="attack-step-card">
+                    <div class="step-number">04</div>
+                    <div class="step-icon">🎣</div>
+                    <h3 class="step-title">Credential Harvesting</h3>
+                    <p class="step-desc">
+                        The unsuspecting victim submits their username, password, and OTP on the fake form. Backend PHP/Node scripts log credentials to attacker databases.
+                    </p>
+                    <div class="step-indicator">Action: Keylogging / MITM</div>
+                </div>
+
+                <div class="attack-step-card">
+                    <div class="step-number">05</div>
+                    <div class="step-icon">🚨</div>
+                    <h3 class="step-title">Exfiltration & Account Takeover</h3>
+                    <p class="step-desc">
+                        Credentials are transmitted to Telegram bots or Dark Web marketplaces. The victim is forwarded to the real website, leaving them unaware of compromise.
+                    </p>
+                    <div class="step-indicator">Impact: Account Takeover</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scan History Section -->
+        <section id="history-section" class="history-section">
+            <div class="section-header">
+                <div class="badge-category">LOCAL SESSION LOGS</div>
+                <div class="history-header-row">
+                    <div>
+                        <h2 class="section-title">Scan History</h2>
+                        <p class="section-subtitle">Track previously analyzed URLs during this session.</p>
+                    </div>
+                    <button class="btn-secondary" onclick="clearHistory()">Clear History</button>
+                </div>
+            </div>
+
+            <div class="card history-card">
+                <div class="table-responsive">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Target URL</th>
+                                <th>Risk Score</th>
+                                <th>Verdict</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <tr id="emptyHistoryRow">
+                                <td colspan="5" class="empty-state">No scans executed yet. Paste a URL above to analyze.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Info & Ethical Hacking Defense Section -->
+        <section id="project-info" class="project-info-section">
+            <div class="section-header">
+                <div class="badge-category">ACADEMIC SPECIFICATIONS</div>
+                <h2 class="section-title">Ethical Hacking Project Overview</h2>
+                <p class="section-subtitle">Technical framework, detection principles, and defensive objectives.</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="card info-card">
+                    <div class="info-icon">🔬</div>
+                    <h3 class="info-title">Why URL Heuristics?</h3>
+                    <p class="info-text">
+                        Traditional signature-based antivirus solutions struggle against ephemeral zero-day phishing sites that exist for only hours. Structural and lexical URL heuristics provide lightweight, zero-latency detection before network traffic reaches unauthorized endpoints.
+                    </p>
+                </div>
+
+                <div class="card info-card">
+                    <div class="info-icon">⚙️</div>
+                    <h3 class="info-title">Detection Methodology</h3>
+                    <p class="info-text">
+                        The engine evaluates 14 independent threat vectors including hostname entropy, transport encryption, brand trademark divergence, basic auth injection, Punycode homographs, and high-abuse top level domains to compute a consolidated risk index (0-100).
+                    </p>
+                </div>
+
+                <div class="card info-card">
+                    <div class="info-icon">🛡️</div>
+                    <h3 class="info-title">Privacy & Credential Safety</h3>
+                    <p class="info-text">
+                        This system operates strictly as a defensive URL diagnostic engine. It does NOT prompt for, intercept, store, or transmit user passwords or confidential authentication tokens.
+                    </p>
+                </div>
+
+                <div class="card info-card">
+                    <div class="info-icon">🎓</div>
+                    <h3 class="info-title">Student Authorship & Submission</h3>
+                    <p class="info-text">
+                        <strong>Subject:</strong> Ethical Hacking & Defensive Cybersecurity<br>
+                        <strong>Project Scope:</strong> Full-Stack Heuristic URL Scanner & Phishing Detection Engine<br>
+                        <strong>Implementation:</strong> Python (Flask), Custom Heuristic Rules, Modern Cyber UI
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="brand-text">
+                    <span class="brand-name">PHISH<span class="brand-accent">SENTRY</span></span>
+                    <span class="brand-tag">Fake Login Page Detector</span>
+                </div>
+                <p class="footer-desc">Student Project developed for Ethical Hacking subject. Custom full-stack URL heuristic implementation.</p>
+            </div>
+            <div class="footer-col">
+                <span class="footer-heading">Quick Links</span>
+                <a href="#scanner">Scanner</a>
+                <a href="#results-section">Audit Results</a>
+                <a href="#attack-anatomy">Attack Anatomy</a>
+                <a href="#project-info">Project Info</a>
+            </div>
+            <div class="footer-col">
+                <span class="footer-heading">Status</span>
+                <span class="footer-status"><span class="dot pulse-green"></span> Engine Operational</span>
+                <span class="footer-note">Built with Python Flask & Cyber Security Heuristics</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 PhishSentry | Student Cybersecurity Project for Ethical Hacking. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
